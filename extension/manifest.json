@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "AdShare — Earn while AI thinks",
+  "version": "1.0.0",
+  "description": "See clearly labelled sponsored recommendations while using supported AI assistants and earn rewards for verified views.",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["http://localhost:3000/*", "https://*/*"],
+  "action": {"default_popup": "popup.html", "default_title": "AdShare", "default_icon": {"16":"logo.png","48":"logo.png","128":"logo.png"} },
+  "icons": {"16":"logo.png","48":"logo.png","128":"logo.png"},
+  "background": {"service_worker": "background.js"},
+  "content_scripts": [{
+    "matches": ["https://chatgpt.com/*", "https://chat.openai.com/*", "https://gemini.google.com/*", "https://claude.ai/*"],
+    "js": ["content.js"], "css": ["adshare.css"], "run_at": "document_idle"
+  }]
+}
